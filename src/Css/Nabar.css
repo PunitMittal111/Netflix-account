@@ -1,0 +1,51 @@
+.nabar {
+  position: absolute;
+  left: 0;
+  width: 90%;
+  background: transparent;
+  color: black;
+  z-index: 2;
+}
+
+.logo {
+  font-size: 3rem;
+  font-weight: bold;
+  color: red;
+  margin-left: 20px;
+}
+
+.bend {
+  display: inline-block;
+  position: relative;
+}
+
+.move-up {
+  position: relative;
+  top: -5px;
+}
+
+.move-bit {
+  position: relative;
+  top: -1px;
+}
+
+.custom-select {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+}
+
+.select-icon {
+  position: absolute;
+  left: 6px;
+  pointer-events: none;
+}
+
+select {
+  padding-left: 30px;
+  background: transparent;
+  color: white;
+  border: 1px solid gray;
+  border-radius: 4px;
+  padding: 8px;
+}

@@ -1,0 +1,30 @@
+.input-width {
+  position: relative;
+  margin-top: 10px;
+}
+
+.input-width input {
+  width: 460px;
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input-width label {
+  position: absolute;
+  left: 17px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input-width input:focus + label,
+.input-width input:not(:placeholder-shown) + label {
+  top: 5px;
+  font-size: 12px;
+  transform: translateY(-10%) scale(1);
+}
