@@ -2,6 +2,7 @@ import React from "react";
 import "../Css/Nabar.css";
 import { MdOutlineTranslate } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "./common/CustomButton";
 
 const Nabar = () => {
   const navigate = useNavigate();
@@ -31,12 +32,13 @@ const Nabar = () => {
             <option className="text-black">हिंदी</option>
           </select>
         </div>
-        <button
+
+        <CustomButton
+          text="Sign Up"
+          width="w-24"
+          height="h-8"
           onClick={handleClick}
-          className="px-4 py-2 bg-red-600 rounded-lg text-white hover:bg-red-700"
-        >
-          Sign In
-        </button>
+        />
       </div>
     </div>
   );

@@ -1,17 +1,22 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, clearError } from "../redux/profileSlice";
 import "../Css/Login.css";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import CustomButton from "./common/CustomButton";
 
-const Login = ({ setEmail }) => {
+const Login = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const [email, setEmailState] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(true);
 
   const handleClick = () => {
     if (validateEmail(email)) {
-      setEmail(email);
-      navigate("/signup/password?");
+      localStorage.setItem("email", email);
+      navigate("/signup/password");
     } else {
       setIsValidEmail(false);
     }
@@ -25,7 +30,8 @@ const Login = ({ setEmail }) => {
 
   const handleInputChange = (e) => {
     setEmailState(e.target.value);
-    setIsValidEmail(true); // Reset validation state when input changes
+    setIsValidEmail(true);
+    dispatch(clearError());
   };
 
   return (
@@ -46,27 +52,35 @@ const Login = ({ setEmail }) => {
         <input
           type="email"
           value={email}
+          id="email"
           onChange={handleInputChange}
           placeholder=""
           className={`bg-custom-gray py-4 px-12 w-auto rounded-md text-start text-white border-2 ${
             !isValidEmail
               ? "border-red-600 focus:border-red-600"
               : "border-gray-600 focus:border-red-600"
-          } focus:outline-red-600`}
+          } focus:outline-red-600 peer`}
         />
 
-        <label>Email address</label>
-        <button
-          onClick={handleClick}
-          className="flex items-center bg-red-600 hover:bg-red-700 font-semibold rounded-md py-4 px-8 text-xl"
+        <label
+          htmlFor="email"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg transition-all duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-lg peer-focus:top-2 peer-focus:text-xs peer-focus:text-red-600"
         >
-          Get Started
-          <MdKeyboardArrowRight className="text-white ml-3" size={28} />
-        </button>
+          Email address
+        </label>
+
+        <CustomButton
+          text={
+            <span className="flex items-center ">
+              Get Started
+              <MdKeyboardArrowRight className="text-white ml-2" size={28} />
+            </span>
+          }
+          width="w-32"
+          height="h-14"
+          onClick={handleClick}
+        />
       </div>
-      {!isValidEmail && (
-        <p className="text-red-600 mt-2">Please enter a valid email address.</p>
-      )}
     </div>
   );
 };

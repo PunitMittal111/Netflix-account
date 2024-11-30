@@ -12,10 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home email={email} setEmail={setEmail} />} />
         <Route path="/login" element={<SignIn />} />
-        <Route
-          path="/signup/password?"
-          element={<SignInPass email={email} />}
-        />
+        <Route path="/signup/password" element={<SignInPass email={email} />} />
       </Routes>
     </div>
   );
